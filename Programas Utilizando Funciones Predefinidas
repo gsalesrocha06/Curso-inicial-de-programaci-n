@@ -1,0 +1,54 @@
+#Crecimiento de población
+
+import math # Importamos la librería math para usar funciones matemáticas si fueran necesarias, aunque euler se define manualmente aquí.
+
+# Bucle para obtener la población inicial (Ni)
+while True:
+      Ni = input("escribe la población inicial: ")
+      try:
+        Ni = int(Ni) # Intentamos convertir la entrada a entero
+        break # Si es exitoso, salimos del bucle
+      except ValueError:
+        print("Entrada no válida. Por favor, ingrese un número enteroe.") # Si hay un error, pedimos una nueva entrada
+
+# Bucle para obtener la tasa de crecimiento
+while True:
+    tasadecrecimiento_str = input("ingresa la tasa de crecimiento: ").lower()
+    try:
+        tasadecrecimiento = float(tasadecrecimiento_str) # Intentamos convertir la entrada a flotante
+        if 0 <= tasadecrecimiento <= 1: # Verificamos si la tasa está en el rango válido (0 a 1)
+            break # Si es válido, salimos del bucle
+        else:
+            print("Opción no válida. Escriba un rango entre 0 y 1.") # Si no está en el rango, pedimos una nueva entrada
+    except ValueError:
+        print("Entrada no válida. Por favor, ingrese un número.") # Si hay un error, pedimos una nueva entrada
+
+Ni = float(Ni) # Convertimos la población inicial a flotante para cálculos futuros
+
+# Obtenemos el número de años a simular
+años = input("escribe el número de años a simular: ")
+
+try:
+    años = int(años) # Intentamos convertir la entrada a entero
+except ValueError:
+    print("Entrada no válida para el número de años. Por favor, ingrese un número entero.")
+    años = 0 # Si hay un error, asignamos 0 a años para evitar errores posteriores
+
+#crecimiento de población (CDP) - Fórmula de crecimiento exponencial
+# Se define el valor de Euler manualmente
+euler = 2.718281828459045
+
+# Calculamos el crecimiento de la población utilizando la fórmula de crecimiento exponencial: Ni * e^(tasa * años)
+CDP = Ni * (euler**(años*tasadecrecimiento))
+
+# Imprimimos el resultado
+print("\nEl crecimiento de la población sería " ,CDP, "\n")  
+
+#Salidas
+#escribe la población inicial: 
+#ingresa la tasa de crecimiento: 
+  #Opción no válida. Escriba un rango entre 0 y 1.
+#ingresa la tasa de crecimiento
+#escribe el número de años a simular
+
+#El crecimiento de la población sería 
