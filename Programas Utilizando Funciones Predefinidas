@@ -1,4 +1,4 @@
-#Crecimiento de población
+Codigo 1 #Crecimiento de población
 
 import math # Importamos la librería math para usar funciones matemáticas si fueran necesarias, aunque euler se define manualmente aquí.
 
@@ -52,3 +52,93 @@ print("\nEl crecimiento de la población sería " ,CDP, "\n")
 #escribe el número de años a simular
 
 #El crecimiento de la población sería 
+
+#codigo 2
+
+#Distancia entre dos puntos
+import math # Importamos la librería math para usar la función sqrt (raíz cuadrada)
+
+# Bucle para obtener las coordenadas de los dos puntos
+while True:
+    coordenadas = input("inserta los puntos de x (x1 y x2) y los puntos de y (y1, y2) separados por espacios:")
+    try:
+        # Separamos la entrada por espacios y convertimos cada parte a flotante
+        x1, x2, y1, y2 = coordenadas.split()
+        x1 = float(x1)
+        x2 = float(x2)
+        y1 = float(y1)
+        y2 = float(y2)
+
+        # Imprimimos las coordenadas ingresadas para verificación
+        print ("\n x1= ",x1, "x2=" ,x2, "y=1" ,y1,"y2=" ,y2, "\n")
+
+        break # Salimos del bucle si la conversión es exitosa
+    except ValueError:
+        print("Entrada no válida. Por favor, ingrese cuatro números (pueden ser decimales) separados por espacios.") # Si hay un error, pedimos una nueva entrada
+
+
+# Calculamos la distancia entre los dos puntos utilizando la fórmula de la distancia euclidiana: sqrt((x2-x1)^2 + (y2-y1)^2)
+distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+# Imprimimos el resultado
+print("\nThe distance is:", distance, "\n")
+
+#inserta los puntos de x (x1 y x2) y los puntos de y (y1, y2) separados por espacios:
+#x1=  -- x2= -- y1= -- y2= -- 
+#The distance is:
+
+
+#codigo 3
+#Litros de pintura El programa debe leer el área de la superficie a pintar en metros cuadrados y la cantidad de metros cuadrados que se pueden cubrir con un litro de pintura. Y mostrar la cantidad de litros de pintura que se deben comprar para cubrir esa superficie.
+
+#Considera que sólo se pueden comprar litros completos de pintura.
+import math # Importamos la librería math para usar la función ceil (redondear hacia arriba)
+
+# Definimos cuántos metros cuadrados cubre un litro de pintura
+metros_por_litro = 10
+
+# Preguntamos al usuario si tiene las medidas o el área directamente
+apintar = input("tienes medidas de la pared o el area en metros cuadrados (escribe 'medidas' o 'area'): ").lower()
+
+# Si el usuario elige "medidas"
+if apintar == "medidas":
+    while True:
+        medidas_str = input("ingresa la base y la altura separadas por un espacio: ")
+        try:
+            # Separamos la entrada por espacios y convertimos a flotantes, luego calculamos el área
+            base, altura = map(float, medidas_str.split())
+            area = base * altura
+            break # Salimos del bucle si la conversión es exitosa
+        except ValueError:
+            print("Entrada no válida. Por favor, ingrese dos números separados por espacios.") # Si hay un error, pedimos una nueva entrada
+# Si el usuario elige "area"
+elif apintar == "area":
+    while True:
+        area_str = input("ingresa el area en metros cuadrados: ")
+        try:
+            area = float(area_str) # Convertimos la entrada a flotante
+            break # Salimos del bucle si la conversión es exitosa
+        except ValueError:
+            print("Entrada no válida. Por favor, ingrese un número.") # Si hay un error, pedimos una nueva entrada
+# Si la entrada no es válida
+else:
+    print("Entrada no válida. Por favor, escribe 'medidas' o 'area'.")
+    area = 0 # Asignamos 0 a area para evitar errores posteriores
+
+# Si el área es mayor que 0, procedemos con los cálculos
+if area > 0:
+    # Calculamos cuántos litros se necesitan (puede ser un número decimal)
+    litros_necesarios = area / metros_por_litro
+    # Redondeamos hacia arriba para comprar litros completos
+    litros_a_comprar = math.ceil(litros_necesarios)
+    # Imprimimos el resultado
+    print(f"\nNecesitas comprar {litros_a_comprar} litros de pintura.\n")
+else:
+    # Si el área es 0 o inválida, mostramos un mensaje de error
+    print("\nNo se puede calcular la cantidad de pintura con la entrada proporcionada.\n")
+
+#tienes medidas de la pared o el area en metros cuadrados (escribe 'medidas' o 'area'): medidas
+#ingresa la base y la altura separadas por un espacio: -- --
+
+#Necesitas comprar  litros de pintura.
+
