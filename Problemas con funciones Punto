@@ -1,0 +1,100 @@
+#Calcula Grado
+
+# Define la función para calcular el grado basado en un número
+def calcular_grado(numero):
+    # Verifica si el número está fuera del rango válido (0 a 1)
+    if numero < 0 or numero > 1:
+        return "puntuación incorrecta" # Devuelve un mensaje de error si es incorrecto
+    elif numero > 0.9:
+        return "A" # Devuelve "A" si el número es mayor que 0.9
+    elif numero > 0.8:
+        return "B" # Devuelve "B" si el número es mayor que 0.8
+    elif numero > 0.7:
+        return "C" # Devuelve "C" si el número es mayor que 0.7
+    elif numero > 0.6:
+        return "D" # Devuelve "D" si el número es mayor que 0.6
+    else:
+        return "F" # Devuelve "F" si el número es 0.6 o menor
+
+# Bloque try-except para manejar posibles errores de entrada
+try:
+    # Solicita al usuario que ingrese una puntuación y la convierte a flotante
+    score = float(input("Ingresa una puntuación entre 0 y 1: "))
+    # Llama a la función calcular_grado con la puntuación ingresada
+    grade = calcular_grado(score)
+    # Verifica si el resultado de la función es el mensaje de error
+    if grade == "puntuación incorrecta":
+        print(grade) # Imprime el mensaje de error
+    else:
+        print(f"La nota es: {grade}") # Imprime la nota calculada
+except ValueError:
+    # Captura el error si la entrada no se puede convertir a flotante
+    print("puntuacion incorrecta") # Imprime un mensaje de error para entrada no válida
+
+SALIDA
+#Ingresa una puntuación entre 0 y 1: ---
+#La nota es: -
+
+
+
+#Año Bisiesto
+
+#teniendo en cuenta que un año que es divisible entre 4 & no entre 100 es bisiesto
+#al igual que si es divsible entre 400
+#podemos llegar a que
+
+# Define la función para verificar si un año es bisiesto
+def es_bisiesto(año):
+    # con "%" se ve si el residuo es 0, si no lo es el año no es divisible entre 4 y por ende no es bisiesto
+    if año % 4 != 0:
+        return False # No es bisiesto si no es divisible por 4
+    elif año % 100 != 0: # es divisible entre 4 & no entre 100
+        return True # Es bisiesto si es divisible por 4 pero no por 100
+    elif año % 400 != 0: # divisible entre 100 y no en 400
+        return False # No es bisiesto si es divisible por 100 pero no por 400
+    else:
+        return True # Es bisiesto si es divisible por 400
+
+# Solicita al usuario que ingrese un año y lo convierte a entero
+año = int(input("Ingresa un año: "))
+# Llama a la función es_bisiesto y imprime el resultado
+if es_bisiesto(año):
+    print(f"{año} es un año bisiesto.") # Imprime si el año es bisiesto
+else:
+    print(f"{año} no es un año bisiesto.") # Imprime si el año no es bisiesto
+
+SALIDA
+Ingresa un año: ----
+
+
+
+#RETO: Convierte binario a decimal
+
+# Define la función para convertir un número binario a decimal
+# no recibe mas que 1s y 0s
+def binario_decimal(binario):
+    # Verifica si la cadena de entrada está vacía o contiene caracteres diferentes de '0' y '1'
+    if not binario or not all(c in '01' for c in binario):
+        return -1 # Devuelve -1 si la cadena no es un binario válido
+
+# calculadora
+    decimal = 0 # Inicializa la variable para el valor decimal
+    potencia = 0 # Inicializa la variable para la potencia de 2
+    for digito in binario[::-1]: # invierte la cadena para procesar de derecha a izquierda
+        # Convierte el dígito a entero, lo multiplica por 2 elevado a la potencia actual y lo suma al total decimal
+        decimal += int(digito) * 2 ** potencia
+        potencia += 1 # Incrementa la potencia para el siguiente dígito
+    return decimal # Devuelve el valor decimal calculado
+
+# Solicita al usuario que ingrese una cadena binaria
+string= input("instrta la cadena en binario (ej. 1011): ")
+
+# imprime el valor
+decimal = binario_decimal(string) # Llama a la función para convertir el binario a decimal
+print(f"el valor en decimal de: {string} es: {decimal}") # Imprime el resultado
+
+#Si el string recibido es de tamaño 0 o no está formada por sólo 1s y 0s se devuelve un -1.#
+
+SALIDA
+instrta la cadena en binario (ej. 1011): ----
+el valor en decimal de: ---- es: --
