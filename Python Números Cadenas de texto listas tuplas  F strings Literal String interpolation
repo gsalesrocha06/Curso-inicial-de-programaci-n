@@ -1,0 +1,112 @@
+# Lista de tiempos dedicados a redes sociales en horas para cada día
+tiempoRS = [3,5, 4, 2.30, 1, 4, 2]
+
+# Define una función para calcular el tiempo promedio diario
+def tiempo_promedio_diario(tiempos): # La función recibe una lista de tiempos (en horas)
+    # Verifica si la lista de tiempos está vacía
+    if not tiempos:
+        return 0 # Si está vacía, devuelve 0 para evitar división por cero
+    # Calcula la suma de los tiempos y la divide por la cantidad de elementos en la lista (longitud de la lista)
+    return sum(tiempos) / len(tiempos) # Calcula el promedio
+
+# Calcula el tiempo promedio en horas utilizando la función definida
+tiempo_promedio_horas = tiempo_promedio_diario(tiempoRS)
+# Imprime el tiempo promedio en horas, formateado a dos decimales usando f-string
+print(f"El tiempo promedio diario en redes sociales es de {tiempo_promedio_horas:.2f} horas.")
+
+# Define una función lambda para convertir horas a minutos (horas * 60)
+horas_a_minutos = lambda horas: horas * 60
+# Calcula el tiempo promedio en minutos utilizando la función lambda
+tiempo_promedio_minutos = horas_a_minutos(tiempo_promedio_horas)
+# Imprime el tiempo promedio en minutos, formateado a dos decimales usando f-string
+print(f" El tiempo promedio diario en redes sociales es de {tiempo_promedio_minutos:.2f} minutos por día.")
+
+# Define una función lambda para convertir horas a segundos (horas * 60 * 60 o horas * 3600)
+horas_a_segundos = lambda horas: horas * 60 * 60 # Se puede multiplicar igual solo que por 3600
+# Calcula el tiempo promedio en segundos utilizando la función lambda
+timpo_promedio_en_segundos = horas_a_segundos (tiempo_promedio_horas)
+# Imprime el tiempo promedio en segundos, formateado a dos decimales usando f-string
+print(f" El tiempo promedio diario en redes sociales es de {timpo_promedio_en_segundos:.2f} segundos por día.")
+
+
+SALIDA
+#El tiempo promedio diario en redes sociales es de ---- horas.
+#El tiempo promedio diario en redes sociales es de ---- minutos por día.
+#El tiempo promedio diario en redes sociales es de ---- segundos por día.
+
+
+# Inicializa el total del pedido a 0
+pedido_total = 0
+
+# Muestra un mensaje de bienvenida al usuario
+print("Bienvenido, realiza tu orden aquí")
+
+# Inicia un bucle infinito para permitir al usuario hacer múltiples pedidos
+while True:
+
+    # Muestra el menú de opciones al usuario
+    print("1. Pizza - $10")
+    print("2. Hamburguesa - $8")
+    print("3. Ensalada - $7")
+    print("0. Finalizar pedido")
+
+
+    # Solicita al usuario que introduzca el número de la opción deseada
+    opcion = input("\nIntroduce el número de la opción que deseas ")
+
+    # Si el usuario ingresa '0', sale del bucle (finaliza el pedido)
+    if opcion == '0':
+        break
+
+    # Inicializa el precio y el nombre del producto a 0 y cadena vacía respectivamente
+    precio = 0
+    producto = ""
+    # Utiliza una estructura match-case para manejar las diferentes opciones del menú
+    match opcion:
+        case '1':
+            precio = 10 # Asigna el precio de la pizza
+            producto = "Pizza" # Asigna el nombre del producto
+        case '2':
+            precio = 8 # Asigna el precio de la hamburguesa
+            producto = "Hamburguesa" # Asigna el nombre del producto
+        case '3':
+            precio = 7 # Asigna el precio de la ensalada
+            producto = "Ensalada" # Asigna el nombre del producto
+        case "0":
+            # Este caso nunca se alcanzará debido al 'if opcion == '0': break' anterior
+            print("Valor no válido. Por favor, ingresa 1, 2, 3, o 0.")
+            continue # Continúa al inicio del bucle
+
+        # Maneja cualquier otra entrada que no sea 1, 2, 3 o 0
+        case _:
+            print("Valor no válido. Por favor, ingresa 1, 2, 3, o 0.")
+            continue # Continúa al inicio del bucle
+
+
+    # Suma el precio del producto seleccionado al total del pedido
+    pedido_total += precio
+    # Muestra un mensaje confirmando la adición del producto y el total actual
+    print(f"Añadiste {producto} a tu pedido. Total actual: ${pedido_total}  ")
+
+    # Pregunta al usuario si desea seguir añadiendo productos
+    continuar = input("¿Deseas seguir añadiendo productos? (sí/no): ").lower()
+    # Si la respuesta es "no", sale del bucle
+    if continuar == "no":
+        break
+
+
+# Una vez que el bucle termina, imprime el total final del pedido
+print(f"El total de su pedido es: ${pedido_total} ")
+# Muestra un mensaje de agradecimiento
+print("\nGracias por su pedido.")
+
+
+SALIDA
+
+#Bienvenido, realiza tu orden aquí
+#1. Pizza - $10
+#2. Hamburguesa - $8
+#3. Ensalada - $7
+#0. Finalizar pedido
+
+#Introduce el número de la opción que deseas----
