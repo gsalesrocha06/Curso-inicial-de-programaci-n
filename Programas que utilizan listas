@@ -1,0 +1,234 @@
+#1) Analizador de una lista entera (todo-en-uno de una sola lista)
+
+def main():
+    # Función principal para analizar una lista de enteros.
+
+    # Leer n > 0: Solicitar al usuario un número entero positivo para determinar el tamaño de la lista.
+    while True:
+        try:
+            n = int(input())
+            if n > 0:
+                break
+        except ValueError:
+            # Manejar errores si la entrada no es un número entero.
+            pass
+
+    # Leer n enteros: Llenar la lista con n números enteros ingresados por el usuario.
+    lista = []
+    for _ in range(n):
+        lista.append(int(input()))
+
+    # Mostrar lista[i] = valor: Imprimir cada elemento de la lista con su índice positivo.
+    for i in range(n):
+        print(f"lista[{i}] = {lista[i]}")
+
+    # Mostrar lista[-k] = valor: Imprimir cada elemento de la lista con su índice negativo.
+    for k in range(1, n+1):
+        print(f"lista[-{k}] = {lista[-k]}")
+
+    # Mostrar la lista completa.
+    print(lista)
+
+    # Promedio: Calcular y mostrar el promedio de los elementos de la lista.
+    promedio = sum(lista) / n
+    print(promedio)
+
+    # Contar pares e impares: Contar cuántos números pares e impares hay en la lista.
+    pares = sum(1 for x in lista if x % 2 == 0)
+    impares = n - pares
+    print(f"PARES={pares}")
+    print(f"IMPARES={impares}")
+
+    # Lista al cuadrado: Crear una nueva lista con los cuadrados de cada elemento de la lista original.
+    cuadrados = [x**2 for x in lista]
+    print("CUADRADOS", cuadrados)
+
+    # Sublista pares: Crear una sublista con solo los números pares de la lista original.
+    pares_lista = [x for x in lista if x % 2 == 0]
+    print("PARES_LISTA", pares_lista)
+
+    # Sublista impares: Crear una sublista con solo los números impares de la lista original.
+    impares_lista = [x for x in lista if x % 2 != 0]
+    print("IMPARES_LISTA", impares_lista)
+
+    # Valores menores que su siguiente: Identificar y imprimir los elementos que son menores que el siguiente elemento en la lista.
+    print("MENORES_QUE_EL_SIGUIENTE")
+    for i in range(n-1):
+        if lista[i] < lista[i+1]:
+            print(lista[i])
+
+if __name__ == "__main__":
+    # Ejecutar la función principal si el script se ejecuta directamente.
+    main()
+
+
+#2) Dúo de listas: suma por posición, ordenación y sin duplicados
+def main():
+    # Función principal para trabajar con dos listas de enteros.
+
+    # Leer m > 0: Solicitar al usuario un número entero positivo para determinar el tamaño de las listas.
+    while True:
+        try:
+            m = int(input())
+            if m > 0:
+                break
+        except ValueError:
+            pass
+
+    # Leer m enteros para L1: Llenar la primera lista con m números enteros ingresados por el usuario.
+    L1 = []
+    for _ in range(m):
+        L1.append(int(input()))
+
+    # Leer m enteros para L2: Llenar la segunda lista con m números enteros ingresados por el usuario.
+    L2 = []
+    for _ in range(m):
+        L2.append(int(input()))
+
+    # LSUMA: Crear una nueva lista con la suma de los elementos en la misma posición de L1 y L2.
+    LSUMA = [L1[i] + L2[i] for i in range(m)]
+
+    # LORDENADA: Crear una nueva lista combinando L1 y L2 y ordenando todos los elementos.
+    LORDENADA = sorted(L1 + L2)
+
+    # LUNICA: eliminar duplicados preservando orden de LORDENADA
+    LUNICA = []
+    seen = set() # seen se utiliza para rastrear valores en una lista
+    for x in LORDENADA:
+        if x not in seen:
+            LUNICA.append(x)
+            seen.add(x)
+
+    # Salidas: Imprimir las listas originales y las listas resultantes.
+    print(f"L1= {L1}")
+    print(f"L2= {L2}")
+    print(f"LSUMA= {LSUMA}")
+    print(f"LORDENADA= {LORDENADA}")
+    print(f"LUNICA= {LUNICA}")
+
+if __name__ == "__main__":
+    # Ejecutar la función principal si el script se ejecuta directamente.
+    main()
+
+#3) Menú de funciones para trabajar con listas y strings
+
+def digitos_faltantes():
+    # Función para encontrar los dígitos del 1 al 9 que no están presentes en una lista de dígitos dada.
+    # Leer t (número de dígitos a leer)
+    while True:
+        try:
+            t = int(input())
+            if 0 <= t <= 10:
+                break
+        except ValueError:
+            pass
+
+    # Leer t dígitos y almacenarlos en un conjunto para evitar duplicados y facilitar la búsqueda
+    digitos = set()
+    for _ in range(t):
+        while True:
+            try:
+                d = int(input())
+                if 0 <= d <= 9:
+                    digitos.add(d)
+                    break
+            except ValueError:
+                pass
+
+    # Encontrar los dígitos faltantes del 1 al 9
+    faltantes = [str(i) for i in range(1, 10) if i not in digitos]
+    # Imprimir los dígitos faltantes separados por espacios
+    print(" ".join(faltantes))
+
+def fibonacci_lista():
+    # Función para generar una lista con los primeros n números de la secuencia de Fibonacci.
+    # Leer n (número de términos de Fibonacci a generar)
+    while True:
+        try:
+            n = int(input())
+            if n >= 0:
+                break
+        except ValueError:
+            pass
+
+    # Generar la secuencia de Fibonacci
+    fib = []
+    a, b = 0, 1
+    for _ in range(n):
+        fib.append(a)
+        a, b = b, a + b
+    # Imprimir la lista de Fibonacci
+    print(fib)
+
+def combinar_strings():
+    # Función para combinar dos listas de strings alternando sus elementos.
+    # Leer a y b (tamaños de las listas L1 y L2)
+    try:
+        a = int(input())
+        b = int(input())
+    except ValueError:
+        print("Error")
+        return
+
+    # Validar que a y b sean mayores que 0
+    if a <= 0 or b <= 0:
+        print("Error")
+        return
+
+    print("-----")
+
+    # Leer a strings para L1
+    L1 = []
+    for _ in range(a):
+        L1.append(input())
+
+    print("-----")
+
+    # Leer b strings para L2
+    L2 = []
+    for _ in range(b):
+        L2.append(input())
+
+    print("-----")
+
+    # L3: combinar alternando elementos de L1 y L2
+    L3 = []
+    i, j = 0, 0
+    while i < a or j < b:
+        if i < a:
+            L3.append(L1[i])
+            i += 1
+        if j < b:
+            L3.append(L2[j])
+            j += 1
+
+    # Imprimir las listas originales y la lista combinada
+    print(L1)
+    print(L2)
+    print(L3)
+
+def main():
+    # Función principal que muestra un menú y ejecuta la función seleccionada.
+    while True:
+        print("1) Dígitos faltantes (1–9)")
+        print("2) Fibonacci en lista")
+        print("3) Combinar listas de strings")
+        print("4) Salir")
+
+        try:
+            opcion = int(input())
+            if opcion == 1:
+                digitos_faltantes()
+            elif opcion == 2:
+                fibonacci_lista()
+            elif opcion == 3:
+                combinar_strings()
+            elif opcion == 4:
+                break
+            else:
+                print("Opción inválida")
+        except ValueError:
+            print("Opción inválida")
+
+if __name__ == "__main__":
+    main()
