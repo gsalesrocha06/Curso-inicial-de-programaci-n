@@ -1,0 +1,166 @@
+# Función para obtener la diagonal principal de una matriz cuadrada.
+def diagonal_principal(matriz):
+    # Se inicializa un vector vacío para almacenar los elementos de la diagonal.
+    vector_diagonal = []
+    # Se itera sobre los índices de los renglones (que son iguales a los de las columnas en una matriz cuadrada).
+    for x in range(len(matriz)):
+        # Se agrega el elemento de la diagonal principal (donde el índice del renglón es igual al índice de la columna) al vector.
+        vector_diagonal.append(matriz[x][x])
+    # Se retorna el vector con los elementos de la diagonal principal.
+    return vector_diagonal
+
+# Función para leer los valores de una matriz desde la entrada del usuario.
+def leer(ren, col):
+    # Se inicializa una lista vacía para representar la matriz.
+    matriz = []
+    # Se itera sobre el número de renglones especificado.
+    for i in range(ren):
+        # Se inicializa una lista vacía para representar un renglón.
+        renglon = []
+        # Se itera sobre el número de columnas especificado.
+        for j in range(col):
+            # Se solicita al usuario que ingrese el valor para la posición actual de la matriz.
+            valor = int(input(f"Ingrese el valor para la posición [{i}][{j}]: "))
+            # Se agrega el valor ingresado al renglón actual.
+            renglon.append(valor)
+        # Se agrega el renglón completo a la matriz.
+        matriz.append(renglon)
+    # Se imprime la matriz resultante para que el usuario la vea.
+    print("Matriz resultante:")
+    for renglon in matriz:
+        print(renglon)
+    # Se retorna la matriz leída.
+    return matriz
+
+# Función principal que coordina la lectura de la matriz y la obtención de la diagonal principal.
+def main():
+    # Se solicita al usuario que ingrese el número de renglones y columnas.
+    ren = int(input("Ingrese el número de renglones: "))
+    col = int(input("Ingrese el número de columnas: "))
+    # Se verifica si la matriz es cuadrada (número de renglones igual al número de columnas).
+    if ren != col:
+        # Si la matriz no es cuadrada, se imprime un mensaje de error.
+        print("Error: La matriz no es cuadrada.")
+    else:
+        # Si la matriz es cuadrada, se lee la matriz utilizando la función leer.
+        matriz = leer(ren, col)
+        # Se obtiene la diagonal principal de la matriz utilizando la función diagonal_principal.
+        diagonal = diagonal_principal(matriz)
+        # Se imprime la diagonal principal obtenida.
+        print("Diagonal principal:", diagonal)
+
+# Se asegura de que la función main se ejecute solo cuando el script se corre directamente.
+if __name__ == "__main__":
+    main()
+
+
+# Función para obtener el centro de una matriz.
+def centroMatriz(matriz):
+    # Se inicializa una lista vacía para almacenar el centro de la matriz.
+    matrizSalida = []
+    # Se itera sobre los renglones de la matriz, excluyendo el primer y último renglón.
+    for i in range(1, len(matriz) - 1):
+        # Se inicializa una lista vacía para representar un renglón del centro.
+        vector = []
+        # Se itera sobre las columnas del renglón actual, excluyendo la primera y última columna.
+        for j in range(1, len(matriz[0]) - 1):
+            # Se agrega el elemento actual (que forma parte del centro) al vector.
+            vector.append(matriz[i][j])
+        # Se agrega el vector (renglón del centro) a la lista que representa el centro de la matriz.
+        matrizSalida.append(vector)
+    # Se retorna la lista que contiene el centro de la matriz.
+    return matrizSalida
+
+# Función para leer los valores de una matriz desde la entrada del usuario.
+def leer(ren, col):
+    # Se inicializa una lista vacía para representar la matriz.
+    matriz = []
+    # Se itera sobre el número de renglones especificado.
+    for i in range(ren):
+        # Se inicializa una lista vacía para representar un renglón.
+        renglon = []
+        # Se itera sobre el número de columnas especificado.
+        for j in range(col):
+            # Se solicita al usuario que ingrese el valor para la posición actual de la matriz.
+            valor = int(input(f"Ingrese el valor para la posición [{i}][{j}]: "))
+            # Se agrega el valor ingresado al renglón actual.
+            renglon.append(valor)
+        # Se agrega el renglón completo a la matriz.
+        matriz.append(renglon)
+    # Se imprime la matriz resultante para que el usuario la vea.
+    print("Matriz resultante:")
+    for renglon in matriz:
+        print(renglon)
+    # Se retorna la matriz leída.
+    return matriz
+
+# Función principal que coordina la lectura de la matriz y la obtención de su centro.
+def main():
+    # Se solicita al usuario que ingrese el número de renglones y columnas.
+    ren = int(input("Ingrese el número de renglones: "))
+    col = int(input("Ingrese el número de columnas: "))
+    # Se lee la matriz utilizando la función leer.
+    matriz = leer(ren, col)
+    # Se obtiene el centro de la matriz utilizando la función centroMatriz.
+    centro = centroMatriz(matriz)
+    # Se imprime el centro de la matriz obtenido.
+    print("Centro de la matriz:")
+    for renglon in centro:
+        print(renglon)
+
+# Se asegura de que la función main se ejecute solo cuando el script se corre directamente.
+if __name__ == "__main__":
+    main()
+
+# Función para leer los valores de una matriz desde la entrada del usuario.
+def leer(ren, col):
+    # Se inicializa una lista vacía para representar la matriz.
+    matriz = []
+    # Se itera sobre el número de renglones especificado.
+    for i in range(ren):
+        # Se inicializa una lista vacía para representar un renglón.
+        renglon = []
+        # Se itera sobre el número de columnas especificado.
+        for j in range(col):
+            # Se solicita al usuario que ingrese el valor para la posición actual de la matriz.
+            valor = int(input(f"Ingrese el valor para la posición [{i}][{j}]: "))
+            # Se agrega el valor ingresado al renglón actual.
+            renglon.append(valor)
+        # Se agrega el renglón completo a la matriz.
+        matriz.append(renglon)
+    # Se imprime la matriz resultante para que el usuario la vea.
+    print("Matriz resultante:")
+    for renglon in matriz:
+        print(renglon)
+    # Se retorna la matriz leída.
+    return matriz
+
+# Función para intercambiar dos renglones de una matriz.
+def cambiaRenglones(matriz):
+    # Se solicita al usuario los números de los renglones a intercambiar (se resta 1 para ajustar a índices base 0).
+    renglon1 = int(input("Ingrese el número del primer renglón a intercambiar (1-indexado): ")) - 1
+    renglon2 = int(input("Ingrese el número del segundo renglón a intercambiar (1-indexado): ")) - 1
+    # Se itera sobre las columnas de los renglones.
+    for j in range(len(matriz[0])):
+        # Se intercambian los elementos de los dos renglones en la columna actual.
+        matriz[renglon1][j], matriz[renglon2][j] = matriz[renglon2][j], matriz[renglon1][j]
+    # Se retorna la matriz con los renglones intercambiados.
+    return matriz
+
+# Función principal que coordina la lectura de la matriz y el intercambio de renglones.
+def main():
+    # Se solicita al usuario que ingrese el número de renglones y columnas.
+    ren = int(input("Ingrese el número de renglones: "))
+    col = int(input("Ingrese el número de columnas: "))
+    # Se lee la matriz utilizando la función leer.
+    matriz = leer(ren, col)
+    # Se intercambian los renglones de la matriz utilizando la función cambiaRenglones.
+    matriz = cambiaRenglones(matriz)
+    # Se imprime la matriz después del intercambio.
+    print("Matriz después del intercambio:")
+    for renglon in matriz:
+        print(renglon)
+
+# Se asegura de que la función main se ejecute solo cuando el script se corre directamente.
+if __name__ == "__main__":
+    main()
